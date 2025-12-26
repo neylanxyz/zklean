@@ -1,0 +1,63 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"sepolia:11155111": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "60556032600b8282823980515f1a607314602657634e487b7160e01b5f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f5ffdfea2646970667358221220e148a680880d83462feaa8db9713e6cc55c10f07e352af2d43bb4832d0c23dd964736f6c634300081f0033",
+			"opcodes": "PUSH1 0x55 PUSH1 0x32 PUSH1 0xB DUP3 DUP3 DUP3 CODECOPY DUP1 MLOAD PUSH0 BYTE PUSH1 0x73 EQ PUSH1 0x26 JUMPI PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH0 MSTORE PUSH0 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST ADDRESS PUSH0 MSTORE PUSH1 0x73 DUP2 MSTORE8 DUP3 DUP2 RETURN INVALID PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH0 PUSH0 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 RJUMPI 0x48A6 DUP1 DUP9 0xD DUP4 CHAINID 0x2F 0xEA 0xA8 0xDB SWAP8 SGT DUPN 0xCC SSTORE 0xC1 0xF SMOD CALLF 0x52AF 0x2D NUMBER 0xBB BASEFEE ORIGIN 0xD0 0xC2 RETURNDATASIZE 0xD9 PUSH5 0x736F6C6343 STOP ADDMOD 0x1F STOP CALLER ",
+			"sourceMap": "14359:12650:0:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;14359:12650:0;;;;;;;;;;;;;;;;;"
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "730000000000000000000000000000000000000000301460806040525f5ffdfea2646970667358221220e148a680880d83462feaa8db9713e6cc55c10f07e352af2d43bb4832d0c23dd964736f6c634300081f0033",
+			"opcodes": "PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH0 PUSH0 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 RJUMPI 0x48A6 DUP1 DUP9 0xD DUP4 CHAINID 0x2F 0xEA 0xA8 0xDB SWAP8 SGT DUPN 0xCC SSTORE 0xC1 0xF SMOD CALLF 0x52AF 0x2D NUMBER 0xBB BASEFEE ORIGIN 0xD0 0xC2 RETURNDATASIZE 0xD9 PUSH5 0x736F6C6343 STOP ADDMOD 0x1F STOP CALLER ",
+			"sourceMap": "14359:12650:0:-:0;;;;;;;;"
+		},
+		"gasEstimates": {
+			"creation": {
+				"codeDepositCost": "17000",
+				"executionCost": "96",
+				"totalCost": "17096"
+			},
+			"internal": {
+				"generateAlphaChallenges(Fr,struct Honk.Proof memory)": "infinite",
+				"generateBetaAndGammaChallenges(Fr,struct Honk.Proof memory)": "infinite",
+				"generateEtaChallenge(struct Honk.Proof memory,bytes32[] calldata,uint256,uint256,uint256)": "infinite",
+				"generateGateChallenges(Fr)": "infinite",
+				"generateGeminiRChallenge(struct Honk.Proof memory,Fr)": "infinite",
+				"generateRelationParametersChallenges(struct Honk.Proof memory,bytes32[] calldata,uint256,uint256,uint256,Fr)": "infinite",
+				"generateRhoChallenge(struct Honk.Proof memory,Fr)": "infinite",
+				"generateShplonkNuChallenge(struct Honk.Proof memory,Fr)": "infinite",
+				"generateShplonkZChallenge(struct Honk.Proof memory,Fr)": "infinite",
+				"generateSumcheckChallenges(struct Honk.Proof memory,Fr)": "infinite",
+				"generateTranscript(struct Honk.Proof memory,bytes32[] calldata,uint256,uint256,uint256)": "infinite",
+				"loadProof(bytes calldata)": "infinite",
+				"splitChallenge(Fr)": "infinite"
+			}
+		},
+		"methodIdentifiers": {}
+	},
+	"abi": []
+}

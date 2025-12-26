@@ -1,0 +1,11 @@
+[nargo] Completed with exit code 1
+error: Failed constraint
+   ┌─ src/main.nr:72:12
+   │
+72 │     assert(bytes_to_field(computed) =
+= bytes_to_field(root));
+   │            ------------------------------------------------
+   │
+   = Call stack:
+     1. src/main.nr:72:12
+Failed to solve program: 'Cannot satisfy constraint'

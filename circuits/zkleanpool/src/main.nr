@@ -1,61 +1,79 @@
-// circuits/private_pool/src/main.nr
+// =============================================
+// zkLean Keccak Merkle Membership Proof (Noir)
+// =============================================
+use dep::keccak256::keccak256;
 
-// Tree depth must match Solidity
-const TREE_DEPTH: usize = 20;
+global TREE_DEPTH: u32 = 20;
 
-// Hash helpers
-fn hash2(a: Field, b: Field) -> Field {
-    pedersen([a, b])[0]
-}
-
-fn hash1(a: Field) -> Field {
-    pedersen([a])[0]
-}
-
-fn compute_root(
-    leaf: Field,
-    path_elements: [Field; TREE_DEPTH],
-    path_indices: [bool; TREE_DEPTH],
-) -> Field {
-    let mut hash = leaf;
-
-    for i in 0..TREE_DEPTH {
-        let sibling = path_elements[i];
-
-        hash = if path_indices[i] {
-            // right child
-            hash2(sibling, hash)
-        } else {
-            // left child
-            hash2(hash, sibling)
-        };
+// -----------------------------------------
+// Hash two 32-byte arrays into one 32-byte array
+// -----------------------------------------
+fn hash_pair_bytes(left: [u8; 32], right: [u8; 32]) -> [u8; 32] {
+    let mut input: [u8; 64] = [0u8; 64];
+    for i in 0..32 {
+        input[i] = left[i];
+        input[i + 32] = right[i];
     }
-
-    hash
+    keccak256::<64>(input, 32)
 }
 
-fn main(
-    // ======== PUBLIC INPUTS ========
-    root: pub Field,
-    nullifier_hash: pub Field,
+// -----------------------------------------
+// Hash a single 32-byte array
+// -----------------------------------------
+fn hash_single_bytes(x: [u8; 32]) -> [u8; 32] {
+    keccak256::<32>(x, 32)
+}
 
-    // ======== PRIVATE INPUTS ========
-    secret: Field,
-    nullifier: Field,
-    path_elements: [Field; TREE_DEPTH],
+// -----------------------------------------
+// Convert a 32-byte array to Field (only for public equality checks)
+// -----------------------------------------
+fn bytes_to_field(bytes: [u8; 32]) -> Field {
+    let mut acc: Field = 0;
+    for i in 0..32 {
+        acc = acc * 256 + bytes[i] as Field;
+    }
+    acc
+}
+
+// -----------------------------------------
+// Main circuit
+// -----------------------------------------
+fn main(
+    // Public inputs (as 32-byte arrays)
+    root: pub [u8; 32],
+    nullifier_hash: pub [u8; 32],
+
+    // Private inputs (32-byte arrays)
+    secret: [u8; 32],
+    nullifier: [u8; 32],
+    path_elements: [[u8; 32]; TREE_DEPTH],
     path_indices: [bool; TREE_DEPTH],
 ) {
-    // 1️⃣ Recompute commitment
-    let commitment = hash2(secret, nullifier);
+    // -----------------------------------------
+    // 1. Compute commitment = keccak256(secret || nullifier)
+    // -----------------------------------------
+    let commitment = hash_pair_bytes(secret, nullifier);
 
-    // 2️⃣ Recompute Merkle root
-    let computed_root =
-        compute_root(commitment, path_elements, path_indices);
+    // -----------------------------------------
+    // 2. Recompute Merkle root
+    // -----------------------------------------
+    let mut computed = commitment;
+    for i in 0..TREE_DEPTH {
+        if path_indices[i] {
+            computed = hash_pair_bytes(path_elements[i], computed);
+        } else {
+            computed = hash_pair_bytes(computed, path_elements[i]);
+        }
+    }
 
-    // 3️⃣ Root must match on-chain root
-    assert(computed_root == root);
+    // -----------------------------------------
+    // 3. Check root equality
+    // -----------------------------------------
+    assert(bytes_to_field(computed) == bytes_to_field(root));
 
-    // 4️⃣ Bind nullifier to this commitment
-    let computed_nullifier_hash = hash1(nullifier);
-    assert(computed_nullifier_hash == nullifier_hash);
+    // -----------------------------------------
+    // 4. Compute nullifier hash and check
+    // -----------------------------------------
+    let computed_nullifier_hash = hash_single_bytes(nullifier);
+    assert(bytes_to_field(computed_nullifier_hash) == bytes_to_field(nullifier_hash));
 }

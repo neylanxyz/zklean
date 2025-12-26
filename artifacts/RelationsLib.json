@@ -1,0 +1,61 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"sepolia:11155111": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "60556032600b8282823980515f1a607314602657634e487b7160e01b5f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f5ffdfea2646970667358221220c0c3ef56e8a4d3bf561544ff2ae0674e0f8a54ab0238baf32272e73b1b61037b64736f6c634300081f0033",
+			"opcodes": "PUSH1 0x55 PUSH1 0x32 PUSH1 0xB DUP3 DUP3 DUP3 CODECOPY DUP1 MLOAD PUSH0 BYTE PUSH1 0x73 EQ PUSH1 0x26 JUMPI PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH0 MSTORE PUSH0 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST ADDRESS PUSH0 MSTORE PUSH1 0x73 DUP2 MSTORE8 DUP3 DUP2 RETURN INVALID PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH0 PUSH0 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xC0 0xC3 0xEF JUMP 0xE8 LOG4 0xD3 0xBF JUMP ISZERO PREVRANDAO SELFDESTRUCT 0x2A RJUMP 0x674E 0xF DUP11 SLOAD 0xAB MUL CODESIZE 0xBA RETURN 0x22 PUSH19 0xE73B1B61037B64736F6C634300081F00330000 ",
+			"sourceMap": "29205:30116:0:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;29205:30116:0;;;;;;;;;;;;;;;;;"
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "730000000000000000000000000000000000000000301460806040525f5ffdfea2646970667358221220c0c3ef56e8a4d3bf561544ff2ae0674e0f8a54ab0238baf32272e73b1b61037b64736f6c634300081f0033",
+			"opcodes": "PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH0 PUSH0 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xC0 0xC3 0xEF JUMP 0xE8 LOG4 0xD3 0xBF JUMP ISZERO PREVRANDAO SELFDESTRUCT 0x2A RJUMP 0x674E 0xF DUP11 SLOAD 0xAB MUL CODESIZE 0xBA RETURN 0x22 PUSH19 0xE73B1B61037B64736F6C634300081F00330000 ",
+			"sourceMap": "29205:30116:0:-:0;;;;;;;;"
+		},
+		"gasEstimates": {
+			"creation": {
+				"codeDepositCost": "17000",
+				"executionCost": "96",
+				"totalCost": "17096"
+			},
+			"internal": {
+				"accumulateArithmeticRelation(Fr[40] memory,Fr[26] memory,Fr)": "infinite",
+				"accumulateAuxillaryRelation(Fr[40] memory,struct Honk.RelationParameters memory,Fr[26] memory,Fr)": "infinite",
+				"accumulateDeltaRangeRelation(Fr[40] memory,Fr[26] memory,Fr)": "infinite",
+				"accumulateEllipticRelation(Fr[40] memory,Fr[26] memory,Fr)": "infinite",
+				"accumulateLogDerivativeLookupRelation(Fr[40] memory,struct Honk.RelationParameters memory,Fr[26] memory,Fr)": "infinite",
+				"accumulatePermutationRelation(Fr[40] memory,struct Honk.RelationParameters memory,Fr[26] memory,Fr)": "infinite",
+				"accumulatePoseidonExternalRelation(Fr[40] memory,Fr[26] memory,Fr)": "infinite",
+				"accumulatePoseidonInternalRelation(Fr[40] memory,Fr[26] memory,Fr)": "infinite",
+				"accumulateRelationEvaluations(Fr[40] memory,struct Honk.RelationParameters memory,Fr[25] memory,Fr)": "infinite",
+				"scaleAndBatchSubrelations(Fr[26] memory,Fr[25] memory)": "infinite",
+				"wire(Fr[40] memory,enum WIRE)": "infinite"
+			}
+		},
+		"methodIdentifiers": {}
+	},
+	"abi": []
+}
