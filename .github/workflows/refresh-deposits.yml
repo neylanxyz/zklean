@@ -6,6 +6,11 @@ on:
     # Run every 7 minutes - TESTING
     - cron: "0,7,14,21,28,35,42,49,56 * * * *"
 
+# Prevent multiple runs from overlapping
+concurrency:
+  group: refresh-deposits
+  cancel-in-progress: false
+
 jobs:
   refresh:
     name: Update deposits.json
@@ -45,9 +50,10 @@ jobs:
           git add src/data/deposits.json
           git diff --staged --quiet || git commit -m "chore: update deposits.json [skip ci]"
 
-      - name: Pull before push
+      - name: Pull changes
         working-directory: ./front-vite
-        run: git pull --rebase --autostash origin develop
+        run: |
+          git pull origin develop --no-edit --strategy-option=theirs || true
 
       - name: Push changes
         uses: ad-m/github-push-action@master
