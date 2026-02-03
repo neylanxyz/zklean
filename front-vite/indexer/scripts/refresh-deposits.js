@@ -24,7 +24,7 @@ config();
 const SWIRL_CONTRACT_ADDRESS = '0xDAfA37E8DA60c00F689e70fefcD06EdC1C4dACbe';
 const START_BLOCK = BigInt(process.env.START_BLOCK || 33349712);
 const OUTPUT_FILE = process.env.OUTPUT_FILE || './src/data/deposits.json';
-const BLOCK_RANGE = 10000n;
+const BLOCK_RANGE = 10n; // Alchemy Free Tier limit (10 blocks for eth_getLogs)
 
 // Deposit event ABI
 const DEPOSIT_EVENT = {
