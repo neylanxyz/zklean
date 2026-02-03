@@ -1,0 +1,53 @@
+name: Refresh Deposit Data
+
+on:
+  workflow_dispatch:  # Manual trigger
+  schedule:
+    # Run every hour
+    - cron: '0 * * * *'
+
+jobs:
+  refresh:
+    name: Update deposits.json
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        working-directory: ./front-vite
+        run: pnpm install
+
+      - name: Refresh deposits data
+        working-directory: ./front-vite
+        env:
+          VITE_PUBLIC_RPC_URL: ${{ secrets.RPC_URL }}
+        run: pnpm run refresh:deposits
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          working-directory: ./front-vite
+          title: 'chore: update deposits.json'
+          body: |
+            Automated update of deposit data from blockchain.
+
+            - Updated `src/data/deposits.json` with latest deposits
+            - Run by scheduled workflow or manual trigger
+          branch: update-deposits
+          commit-message: 'chore: update deposit data'
+          add-paths: |
+            **/deposits.json

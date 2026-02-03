@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "export:deposits": "node indexer/scripts/export-deposits.js",
+    "refresh:deposits": "node indexer/scripts/refresh-deposits.js"
   },
   "dependencies": {
     "@aztec/bb.js": "3.0.0-nightly.20251104",
@@ -18,6 +20,7 @@
     "@rainbow-me/rainbowkit": "^2.2.10",
     "@tanstack/react-query": "^5.90.16",
     "@types/circomlibjs": "^0.1.6",
+    "axios": "^1.13.4",
     "circomlibjs": "^0.1.7",
     "lucide-react": "^0.562.0",
     "react": "^19.2.0",
