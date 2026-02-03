@@ -34,7 +34,7 @@ jobs:
       - name: Refresh deposits data
         working-directory: ./front-vite
         env:
-          VITE_PUBLIC_RPC_URL: ${{ secrets.RPC_URL }}
+          RPC_URL: ${{ secrets.RPC_URL }}
         run: pnpm run refresh:deposits
 
       - name: Commit changes
