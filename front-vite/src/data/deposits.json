@@ -324,6 +324,12 @@
       "leafIndex": 63,
       "commitment": "0x24db8b5863ea194abe7603f5903107f8fb475634c9bb383f13e2993e873aaed7",
       "blockNumber": "34129676"
+    },
+    {
+      "leafIndex": 64,
+      "commitment": "0x22e7c824da878cec31d7ac07dc699f23b3e0a6e8aeeb1be0be5ee4e77d62fccf",
+      "transactionHash": "0xb132b4837291a393842b365a5c5521e7d6bebb9382a2ebb1b378665fd47694c4",
+      "blockNumber": "34265040"
     }
   ]
 }

@@ -1,10 +1,10 @@
-name: Refresh Deposit Data
+name: Refresh Deposit Data (Develop - Testing)
 
 on:
   workflow_dispatch:  # Manual trigger
   schedule:
-    # Run every hour
-    - cron: '0 * * * *'
+    # Run every 7 minutes - TESTING
+    - cron: '0,7,14,21,28,35,42,49,56 * * * *'
 
 jobs:
   refresh:
@@ -37,17 +37,16 @@ jobs:
           VITE_PUBLIC_RPC_URL: ${{ secrets.RPC_URL }}
         run: pnpm run refresh:deposits
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
-        with:
-          working-directory: ./front-vite
-          title: 'chore: update deposits.json'
-          body: |
-            Automated update of deposit data from blockchain.
+      - name: Commit changes
+        working-directory: ./front-vite
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/data/deposits.json
+          git diff --staged --quiet || git commit -m "chore: update deposits.json [skip ci]"
 
-            - Updated `src/data/deposits.json` with latest deposits
-            - Run by scheduled workflow or manual trigger
-          branch: update-deposits
-          commit-message: 'chore: update deposit data'
-          add-paths: |
-            **/deposits.json
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: develop
