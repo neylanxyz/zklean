@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
+import axios from 'axios'
 import { useCommitmentStore } from '@/stores/commitmentStore'
 import { useWithdrawTransaction, WithdrawStep } from '@/hooks/useWithdrawTransaction'
 import { useAccount } from 'wagmi'
@@ -86,6 +87,25 @@ export const WithdrawButton = () => {
         recipientAddress
       );
     } catch (err) {
+      // Verificar se é erro do Indexer (axios error com status 404)
+      if (axios.isAxiosError(err)) {
+        const status = err.response?.status;
+        if (status === 404) {
+          toast.error('Indexer is offline. Please try again later.');
+          setTimeout(() => { reset(); }, 3000);
+          return;
+        }
+        if (status) {
+          toast.error(`Indexer error: HTTP ${status}`);
+          setTimeout(() => { reset(); }, 3000);
+          return;
+        }
+        // Network error (sem response)
+        toast.error('Network error. Unable to reach indexer.');
+        setTimeout(() => { reset(); }, 3000);
+        return;
+      }
+
       const parsed = parseViemError(err);
 
       if (parsed.type === 'user_rejected') {

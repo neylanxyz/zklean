@@ -1,5 +1,14 @@
 import { useState, useCallback } from 'react';
+import axios from 'axios';
 import { INDEXER } from "@/config/environmentVars"
+
+// Create axios instance with defaults
+const indexerApi = axios.create({
+    baseURL: INDEXER.API_URL,
+    headers: {
+        'Content-Type': 'application/json',
+    },
+});
 
 interface Commitment {
     leafIndex: number;
@@ -16,7 +25,7 @@ export function useIndexer() {
     /**
      * Busca todos os commitments do índice 0 até maxLeafIndex
      */
-    const fetchCommitments = useCallback(async (maxLeafIndex: number, limit: number = 1000): Promise<Commitment[]> => {
+    const fetchCommitments = useCallback(async (maxLeafIndex: number): Promise<Commitment[]> => {
         setLoading(true);
         setError(null);
 
@@ -45,37 +54,41 @@ export function useIndexer() {
                 }
             `;
 
-            const response = await fetch(INDEXER.API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    query,
-                    variables: { maxLeafIndex, limit }
-                })
+            const { data } = await indexerApi.post('', {
+                query,
+                variables: {
+                    maxLeafIndex,
+                    limit: 1000 // Set high limit to get all deposits
+                }
             });
-            console.log("response,", response)
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            if (data.errors) {
+                console.error('❌ GraphQL Errors:', JSON.stringify(data.errors, null, 2));
+                throw new Error(data.errors[0]?.message || 'GraphQL error');
             }
 
-            const result = await response.json();
-            console.log("resspos", result)
+            const commitments = data.data?.depositEvents?.items || [];
 
-            if (result.errors) {
-                console.error('❌ GraphQL Errors:', JSON.stringify(result.errors, null, 2));
-                throw new Error(result.errors[0]?.message || 'GraphQL error');
+            // Log warning if we hit the limit
+            if (commitments.length >= 1000) {
+                console.warn(`⚠️ Reached limit of 1000 deposits. Requested maxLeafIndex: ${maxLeafIndex}`);
             }
-
-            // O caminho correto é depositEvents.items (não commitments)
-            const commitments = result.data?.depositEvents?.items || [];
 
             console.log(`✅ Fetched ${commitments.length} commitments from indexer (0 to ${maxLeafIndex})`);
 
             return commitments;
         } catch (err) {
+            // Axios errors already have status code in err.response.status
+            if (axios.isAxiosError(err)) {
+                const status = err.response?.status;
+                const errorMsg = status
+                    ? `HTTP ${status}: ${err.message}`
+                    : 'Network error - unable to reach indexer';
+                setError(errorMsg);
+                console.error('Error fetching commitments:', errorMsg);
+                throw err;
+            }
+
             const errorMsg = err instanceof Error ? err.message : 'Unknown error';
             setError(errorMsg);
             console.error('Error fetching commitments from indexer:', errorMsg);
@@ -110,31 +123,30 @@ export function useIndexer() {
                 }
             `;
 
-            const response = await fetch(INDEXER.API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    query,
-                    variables: { leafIndex }
-                })
+            const { data } = await indexerApi.post('', {
+                query,
+                variables: { leafIndex }
             });
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            if (data.errors) {
+                console.error('❌ GraphQL Errors:', JSON.stringify(data.errors, null, 2));
+                throw new Error(data.errors[0]?.message || 'GraphQL error');
             }
 
-            const result = await response.json();
-
-            if (result.errors) {
-                console.error('❌ GraphQL Errors:', JSON.stringify(result.errors, null, 2));
-                throw new Error(result.errors[0]?.message || 'GraphQL error');
-            }
-
-            const commitments = result.data?.commitments || [];
+            const commitments = data.data?.commitments || [];
             return commitments.length > 0 ? commitments[0] : null;
         } catch (err) {
+            // Axios errors already have status code in err.response.status
+            if (axios.isAxiosError(err)) {
+                const status = err.response?.status;
+                const errorMsg = status
+                    ? `HTTP ${status}: ${err.message}`
+                    : 'Network error - unable to reach indexer';
+                setError(errorMsg);
+                console.error('Error fetching commitment:', errorMsg);
+                throw err;
+            }
+
             const errorMsg = err instanceof Error ? err.message : 'Unknown error';
             setError(errorMsg);
             console.error('Error fetching commitment by index:', errorMsg);

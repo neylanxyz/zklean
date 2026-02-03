@@ -1,0 +1,335 @@
+{
+  "metadata": {
+    "totalDeposits": 64,
+    "lastBlockNumber": "34129676",
+    "generatedAt": "2026-01-31T11:46:39.432Z"
+  },
+  "deposits": [
+    {
+      "leafIndex": 0,
+      "commitment": "0x15535e892d08454d8ee1ca8bfa7f984b3e066438fa32bed62baac4ec52c4fb9d",
+      "blockNumber": "33350196"
+    },
+    {
+      "leafIndex": 1,
+      "commitment": "0x07a0e32902766c5c7bfe2813218fd5b5f62d0a4788c019b7ea7f32c36668ad1e",
+      "blockNumber": "33350860"
+    },
+    {
+      "leafIndex": 2,
+      "commitment": "0x176b116752a2d6c28c51155bc3f42fead26fe4477213188c98e26606370ac154",
+      "blockNumber": "33350907"
+    },
+    {
+      "leafIndex": 3,
+      "commitment": "0x062de4d71a500821357175c561e60d3ba4d14d23681a040c789464069abce9ca",
+      "blockNumber": "33353377"
+    },
+    {
+      "leafIndex": 4,
+      "commitment": "0x2bfdb02aa11b105c22127d8e7ba7475b1ce0b34e75eef0897fd3d11be60a5210",
+      "blockNumber": "33353397"
+    },
+    {
+      "leafIndex": 5,
+      "commitment": "0x20aa43d522df1ffc4b26da85fabfe711d82325a1aabee8955212b9b11f2255d1",
+      "blockNumber": "33355292"
+    },
+    {
+      "leafIndex": 6,
+      "commitment": "0x04e7586af3e27eb5a1dae5ab76c01c7d3ab93251d41888aed1a9f5cba41873ad",
+      "blockNumber": "33355304"
+    },
+    {
+      "leafIndex": 7,
+      "commitment": "0x067c1f21a94444963beb97761deeda111dbdfaa175bd098a47bfb44140287c01",
+      "blockNumber": "33355612"
+    },
+    {
+      "leafIndex": 8,
+      "commitment": "0x20e61d082ea2913ef8642d325e6fc6c302b7e618f0867a6180cdfed1b6618ad1",
+      "blockNumber": "33355624"
+    },
+    {
+      "leafIndex": 9,
+      "commitment": "0x21247befda0aa08dff118d582084c2a4d8dcae56db5edb4002f81303f6a64032",
+      "blockNumber": "33355687"
+    },
+    {
+      "leafIndex": 10,
+      "commitment": "0x24bc1ab21062fcc2ce2df045405f6d685b22fe284a6e93e4d4d96c805c429e7a",
+      "blockNumber": "33355698"
+    },
+    {
+      "leafIndex": 11,
+      "commitment": "0x17c037bd07d9a1e9b5591fe000d1f01dac1c742a8e93d830b422d23afc79ec00",
+      "blockNumber": "33364146"
+    },
+    {
+      "leafIndex": 12,
+      "commitment": "0x2a513fd8383d7d73fc2961630107d5f62fe87293cf5f2c41db627399d46e063a",
+      "blockNumber": "33364231"
+    },
+    {
+      "leafIndex": 13,
+      "commitment": "0x00e3f9c011174171ffd0f36d3d1be63d7a4ef8c26ea806ead7c9afb8ef39ff57",
+      "blockNumber": "33364651"
+    },
+    {
+      "leafIndex": 14,
+      "commitment": "0x1377b00f6f7d37f5108fadbb3c092007e144d8972050055b06b976b6053269ad",
+      "blockNumber": "33364742"
+    },
+    {
+      "leafIndex": 15,
+      "commitment": "0x05651e81d361d099be3cf079883098ae52767d298fae0cc602af6edbb1804fbc",
+      "blockNumber": "33364768"
+    },
+    {
+      "leafIndex": 16,
+      "commitment": "0x2218476f18624e742741573191eacc73dab31b003749266baf6bbdc9d8cc107c",
+      "blockNumber": "33366071"
+    },
+    {
+      "leafIndex": 17,
+      "commitment": "0x058c17c7eda74a5f9af0f014858e66fdf4aecb6f703382f3240aa50fb2991989",
+      "blockNumber": "33367641"
+    },
+    {
+      "leafIndex": 18,
+      "commitment": "0x06b5994eb764e4597e2b151613c1cb6ea76dbe5a05a1a18618ac65bf479964ec",
+      "blockNumber": "33384933"
+    },
+    {
+      "leafIndex": 19,
+      "commitment": "0x29932823fe7fc3b8a8b4ef00bbd22279a94aa1a03ab124fe55768db300a19995",
+      "blockNumber": "33392067"
+    },
+    {
+      "leafIndex": 20,
+      "commitment": "0x1cedb1dbafab404ccc6d579ac645615cb9457c3af0fe023e051f9e681b2a9297",
+      "blockNumber": "33408308"
+    },
+    {
+      "leafIndex": 21,
+      "commitment": "0x06a341e2d29a9f4cc52a7de991367fec3bf64197752757c9ad0f2d638ed2448e",
+      "blockNumber": "33408384"
+    },
+    {
+      "leafIndex": 22,
+      "commitment": "0x1035d60ca5905a6484ce81ccb574c133ff8aaced588ac62bce256d50e326e6c1",
+      "blockNumber": "33408423"
+    },
+    {
+      "leafIndex": 23,
+      "commitment": "0x2af25235a076b8047eacccae42392bedb58a93911d1373d5035bad99eb71b3bc",
+      "blockNumber": "33408615"
+    },
+    {
+      "leafIndex": 24,
+      "commitment": "0x1f66272be2051f591ce141d308bc11cf50e0a53ea0e239a421b618ef368f71cc",
+      "blockNumber": "33408889"
+    },
+    {
+      "leafIndex": 25,
+      "commitment": "0x04897a31a91d682ede1bd47f74d0bc119ca22024132a6d1b49f3cbd4001de755",
+      "blockNumber": "33412625"
+    },
+    {
+      "leafIndex": 26,
+      "commitment": "0x24c7e25c55f694875689f09aa578765ac31406471d29ac7da141b9992f172043",
+      "blockNumber": "33413925"
+    },
+    {
+      "leafIndex": 27,
+      "commitment": "0x166df5d395ca13829c3833856be99060c8d2afed6c70dff811d28ee32cb3b024",
+      "blockNumber": "33414394"
+    },
+    {
+      "leafIndex": 28,
+      "commitment": "0x184923a8436f9b789dcefa6926b3360c01072cc322401cc3235e8e0dfedf71c6",
+      "blockNumber": "33414955"
+    },
+    {
+      "leafIndex": 29,
+      "commitment": "0x01f6ff86159676e18d24ec7fef5275408c32fd62f89884966acf3d3ce381a9f3",
+      "blockNumber": "33414988"
+    },
+    {
+      "leafIndex": 30,
+      "commitment": "0x0cbdcb3eb90530bf8b59a9f52f17bb4ec42bafb36c3b22a659334e2bf2d7efbd",
+      "blockNumber": "33427187"
+    },
+    {
+      "leafIndex": 31,
+      "commitment": "0x228e99bdc2c66859f395bc17825efaa3decac030ff47b45ea25d80585e374db6",
+      "blockNumber": "33427335"
+    },
+    {
+      "leafIndex": 32,
+      "commitment": "0x26869c207816971ee3a3063b1e22e23db1cf8bfc4a50fe281d1f47221a0ecdda",
+      "blockNumber": "33427393"
+    },
+    {
+      "leafIndex": 33,
+      "commitment": "0x2f63dec13b19d193c78af879d0cd16e9e37559a33bb4274fce6fafe22ee28dd9",
+      "blockNumber": "33427404"
+    },
+    {
+      "leafIndex": 34,
+      "commitment": "0x27f133b51594ddadd29af730fa03d6685f8973b43c8587ffac22a96f034d58ee",
+      "blockNumber": "33428250"
+    },
+    {
+      "leafIndex": 35,
+      "commitment": "0x09277467ad98c0249734aff4413b2a789d2df579bb25641b73a967a799f1c0a2",
+      "blockNumber": "33429019"
+    },
+    {
+      "leafIndex": 36,
+      "commitment": "0x12bf00c2211e0a5a50c25920e7c68ed8025d80d9152765b9bca31a7edd245053",
+      "blockNumber": "33429084"
+    },
+    {
+      "leafIndex": 37,
+      "commitment": "0x1427ed82a722b5dabf8d77a5a93c1cb9702fec16f3bfd23cfae2b7f513d6feec",
+      "blockNumber": "33429533"
+    },
+    {
+      "leafIndex": 38,
+      "commitment": "0x2ebadbd690bb2451a2f651ae6d338bdd15bd74c849ebd022a2df31f68a0a0334",
+      "blockNumber": "33429885"
+    },
+    {
+      "leafIndex": 39,
+      "commitment": "0x23a0691852226fdea09a9882d003cfd0021b9bbce892b619c3a6f5cac4f13f0f",
+      "blockNumber": "33434198"
+    },
+    {
+      "leafIndex": 40,
+      "commitment": "0x045944254779ac712beba4d685c7a29c70116a017128f0e9337088741ff2dc38",
+      "blockNumber": "33434398"
+    },
+    {
+      "leafIndex": 41,
+      "commitment": "0x1eab92375ba67aebb014cfb4a26e89eff2c4bd4dc8f953109f7557734c070e90",
+      "blockNumber": "33438114"
+    },
+    {
+      "leafIndex": 42,
+      "commitment": "0x23c308e929ba7b6b00009513f2a8426fc3b2a986fcc17819923e0d4c0af9db32",
+      "blockNumber": "33438211"
+    },
+    {
+      "leafIndex": 43,
+      "commitment": "0x10913ec8aedf842ba506c316d666af0f8fe22410f9aa5d9b7bcf4252c0488fd2",
+      "blockNumber": "33438298"
+    },
+    {
+      "leafIndex": 44,
+      "commitment": "0x103ce4722230169331034ecbb3037f6fcfee59d6e0e4eaa7a5aa55fbf555bfce",
+      "blockNumber": "33438422"
+    },
+    {
+      "leafIndex": 45,
+      "commitment": "0x2ee739634e7093c948d36ab7121084100150c6476b5aa303253c529acac910da",
+      "blockNumber": "33444512"
+    },
+    {
+      "leafIndex": 46,
+      "commitment": "0x2f59239213296d724765c87c5f3dda600c9a028df9bb70ea3055fd2f63b33a4b",
+      "blockNumber": "33466556"
+    },
+    {
+      "leafIndex": 47,
+      "commitment": "0x1765affa633920e0908ba34c41b5f63f2bf762b285c2bcdf329aab500c072f79",
+      "blockNumber": "33466615"
+    },
+    {
+      "leafIndex": 48,
+      "commitment": "0x02da092a9e516a37d08df6cf27aa301236b56dc00aa88e3e5acaa58f6412c68e",
+      "blockNumber": "33468748"
+    },
+    {
+      "leafIndex": 49,
+      "commitment": "0x1f5591af300ca26cd909f5b2af3eb18a50a8b3daee6bce5314e4f1dfe046fc5d",
+      "blockNumber": "33469753"
+    },
+    {
+      "leafIndex": 50,
+      "commitment": "0x0a518a04f8dd16b2963976151f9dfa59cb2b684d564b079ce4eefd542e00d93d",
+      "blockNumber": "33469767"
+    },
+    {
+      "leafIndex": 51,
+      "commitment": "0x0432fb7621aa6e8e64b66c5343927a2d033e4ae5e458a4f517fc14d3d730354d",
+      "blockNumber": "33469832"
+    },
+    {
+      "leafIndex": 52,
+      "commitment": "0x00e71d8d1546ce9d4cec21203e727cd8baba7122d232bff142371e7e435fdafc",
+      "blockNumber": "33470549"
+    },
+    {
+      "leafIndex": 53,
+      "commitment": "0x01936c692baaf2b95f001ee5f2e6f41a258b961a6cb1809f51b03c829486881e",
+      "blockNumber": "33470563"
+    },
+    {
+      "leafIndex": 54,
+      "commitment": "0x0e860e39915311dc8ccff238ed94f25ba20eefb81fed186756c9c88c5c4783a5",
+      "blockNumber": "33470712"
+    },
+    {
+      "leafIndex": 55,
+      "commitment": "0x21b94cf405483ee18ba212a5892e4bab9a87550652ac80dfde96033bf1a6c21a",
+      "blockNumber": "33470773"
+    },
+    {
+      "leafIndex": 56,
+      "commitment": "0x0aa846e858cf923c5b3ee38fb81705b2cf7ae2d4db198dc5a29c84a58945916d",
+      "blockNumber": "33471767"
+    },
+    {
+      "leafIndex": 57,
+      "commitment": "0x0dec45b212877eec6286b1533eabbc44f5a8ee5cdfb8e772c41ae845ab2dcec9",
+      "blockNumber": "33480905"
+    },
+    {
+      "leafIndex": 58,
+      "commitment": "0x1a1ebc3f846e14fa5c6c53e4bf15cce4a25f26df7ca4bca9afb3dba4352e6580",
+      "blockNumber": "33536067"
+    },
+    {
+      "leafIndex": 59,
+      "commitment": "0x0e87f155ed3116a5f00b329ef36f40f19fec0c2e47f224c1651e142efe3a7301",
+      "blockNumber": "33602640"
+    },
+    {
+      "leafIndex": 60,
+      "commitment": "0x181306ef6882b926864f0e01d8aa81d4460a046d9f018eea2846f3247941d7d2",
+      "blockNumber": "33701999"
+    },
+    {
+      "leafIndex": 61,
+      "commitment": "0x1e224c57cdb6fb6716f8e15945fb24e0f06f4f13d33b749494569f5157556847",
+      "blockNumber": "33707864"
+    },
+    {
+      "leafIndex": 62,
+      "commitment": "0x240021f6a7a993608aa892808e19c930af116860e3e622ac9c09c373bd0913ee",
+      "blockNumber": "33814791"
+    },
+    {
+      "leafIndex": 63,
+      "commitment": "0x24db8b5863ea194abe7603f5903107f8fb475634c9bb383f13e2993e873aaed7",
+      "blockNumber": "34129676"
+    },
+    {
+      "leafIndex": 64,
+      "commitment": "0x22e7c824da878cec31d7ac07dc699f23b3e0a6e8aeeb1be0be5ee4e77d62fccf",
+      "transactionHash": "0xb132b4837291a393842b365a5c5521e7d6bebb9382a2ebb1b378665fd47694c4",
+      "blockNumber": "34265040"
+    }
+  ]
+}

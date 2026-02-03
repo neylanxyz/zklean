@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useSwirlPool } from './useSwirlPool';
-import { useIndexer } from './useIndexer';
+import { useIndexerHybrid } from './useIndexerHybrid';
 import { publicClient } from '@/config';
 import { compute } from '@/scripts/compute.mjs';
 import { generateProof } from '@/helpers/generateProof';
@@ -35,8 +35,8 @@ export function useWithdrawTransaction() {
     const [txHash, setTxHash] = useState<string | undefined>();
     const [error, setError] = useState<Error | undefined>();
 
-    const { withdrawAction, address } = useSwirlPool();
-    const { fetchCommitments } = useIndexer();
+    const { withdrawAction, address, nextIndex } = useSwirlPool();
+    const { fetchCommitments } = useIndexerHybrid();
 
     const executeWithdraw = useCallback(async (
         encodedInput: string,
@@ -50,18 +50,24 @@ export function useWithdrawTransaction() {
 
             if (!address) throw new Error("Wallet not connected");
 
-            // --- ETAPA 1: Fetch Commitments (Indexer) ---
+            // --- STEP 1: Fetch Commitments (Indexer → Hybrid → RPC fallback) ---
             setStep(WithdrawStep.FETCHING_DATA);
-            const deposits = await fetchCommitments(leafIndex, 1000);
+
+            // Calculate total deposits needed from contract's nextIndex
+            // If nextIndex = 60, we need deposits 0-59
+            const totalDepositsNeeded = nextIndex ? Number(nextIndex) : leafIndex + 1;
+            console.log(`[Withdraw] Contract nextIndex: ${nextIndex}, fetching ${totalDepositsNeeded} deposits`);
+
+            const deposits = await fetchCommitments(totalDepositsNeeded);
 
             if (!deposits || deposits.length === 0) {
-                throw new Error('No commitments found in indexer');
+                throw new Error('No commitments found. Please try again.');
             }
 
-            // --- ETAPA 2: Gerar Inputs (Off-chain) ---
+            // --- STEP 2: Generate Inputs (Off-chain) ---
             setStep(WithdrawStep.GENERATING_INPUTS);
 
-            // Validating
+            // Validate commitments are sequential
             for (let i = 0; i < deposits.length; i++) {
                 if (deposits[i].leafIndex !== i) {
                     throw new Error(`Commitments out of order! Expected ${i}, got ${deposits[i].leafIndex}`);
@@ -70,22 +76,17 @@ export function useWithdrawTransaction() {
 
             const commitments = deposits.map((d) => d.commitment);
 
-            // Delay para UI (Essencial)
-            await new Promise(resolve => setTimeout(resolve, 2500));
-
+            // Generate proof inputs
             // @ts-ignore
             const inputs = await compute(commitments, encodedInput);
 
-            // --- ETAPA 3: Gerar ZK Proof ---
+            // --- STEP 3: Generate ZK Proof ---
             setStep(WithdrawStep.GENERATING_PROOF);
-
-            // Delay para UI (Essencial)
-            await new Promise(resolve => setTimeout(resolve, 2500));
 
             // @ts-ignore
             const proof = await generateProof(inputs);
 
-            // --- ETAPA 4: Assinar & Enviar ---
+            // --- STEP 4: Sign & Send Transaction ---
             setStep(WithdrawStep.AWAITING_SIGNATURE);
 
             const finalRecipient = (recipientAddress || address) as `0x${string}`;
@@ -103,7 +104,7 @@ export function useWithdrawTransaction() {
             setTxHash(hash);
             setStep(WithdrawStep.SENDING_TRANSACTION);
 
-            // --- ETAPA 5: Confirmar ---
+            // --- STEP 5: Confirm Transaction ---
             setStep(WithdrawStep.CONFIRMING_TRANSACTION);
 
             const receipt = await publicClient.waitForTransactionReceipt({ hash });
