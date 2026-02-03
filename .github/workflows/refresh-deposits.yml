@@ -45,6 +45,10 @@ jobs:
           git add src/data/deposits.json
           git diff --staged --quiet || git commit -m "chore: update deposits.json [skip ci]"
 
+      - name: Pull before push
+        working-directory: ./front-vite
+        run: git pull --rebase --autostash origin develop
+
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
