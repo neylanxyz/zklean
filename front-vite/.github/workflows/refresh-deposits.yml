@@ -1,0 +1,52 @@
+name: Refresh Deposit Data (Develop - Testing)
+
+on:
+  workflow_dispatch:  # Manual trigger
+  schedule:
+    # Run every 7 minutes - TESTING
+    - cron: '0,7,14,21,28,35,42,49,56 * * * *'
+
+jobs:
+  refresh:
+    name: Update deposits.json
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        working-directory: ./front-vite
+        run: pnpm install
+
+      - name: Refresh deposits data
+        working-directory: ./front-vite
+        env:
+          RPC_URL: ${{ secrets.RPC_URL }}
+        run: pnpm run refresh:deposits
+
+      - name: Commit changes
+        working-directory: ./front-vite
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/data/deposits.json
+          git diff --staged --quiet || git commit -m "chore: update deposits.json [skip ci]"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: develop
